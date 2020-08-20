@@ -14,3 +14,20 @@ class DropColumns(BaseEstimator, TransformerMixin):
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
+     def imput(subject):
+        #subject = "GO"
+        nota = "NOTA_" + subject
+        nota
+        reprovacoes = "REPROVACOES_" + subject
+        ap_null = data.loc[data[reprovacoes] == 0].loc[pd.isnull(data[nota])]
+        
+        rp_null = data.loc[data[reprovacoes] != 0].loc[pd.isnull(data[nota])] 
+        
+        not_null = data.loc[pd.notnull(data[nota])]
+                
+        ap_null[nota] = data[nota].mean()
+        
+        rp_null[nota] = 0
+        
+        data1 = pd.concat([ap_null, rp_null, not_null])
+        return data1
