@@ -13,7 +13,9 @@ class DropColumns(BaseEstimator, TransformerMixin):
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
-    def imput(subject, data1):
+    
+class NoNull (data1): 
+    def imput(subject):
         #subject = "GO"
         nota = "NOTA_" + subject
         nota
