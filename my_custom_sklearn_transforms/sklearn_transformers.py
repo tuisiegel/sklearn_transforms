@@ -14,22 +14,29 @@ class DropColumns(BaseEstimator, TransformerMixin):
         return data.drop(labels=self.columns, axis='columns')
 
     
-def imput(subject, data1):
+class Imput(BaseEstimator, TransformerMixin):
+    def __init__(self, subject):
+        self.subejct = subject
+
+    def fit(self, X, y=None):
+        return self 
     
+    def transform(self, X):
+        # Primeiro realizamos a cópia do dataframe 'X' de entrada
+        data = X.copy() 
+          
+        nota = "NOTA_" + subject
         
-    #subject = "GO"
-    nota = "NOTA_" + subject
-      
-    reprovacoes = "REPROVACOES_" + subject
-    ap_null = data1.loc[data1[reprovacoes] == 0].loc[pd.isnull(data1[nota])]
+        reprovacoes = "REPROVACOES_" + subject
+        ap_null = data.loc[data[reprovacoes] == 0].loc[pd.isnull(data[nota])]
         
-    rp_null = data1.loc[data1[reprovacoes] != 0].loc[pd.isnull(data1[nota])] 
+        rp_null = data.loc[data[reprovacoes] != 0].loc[pd.isnull(data[nota])] 
         
-    not_null = data1.loc[pd.notnull(data1[nota])]
+        not_null = data.loc[pd.notnull(data[nota])]
                 
-    ap_null[nota] = data1[nota].mean()
+        ap_null[nota] = data[nota].mean()
         
-    rp_null[nota] = 0
+        rp_null[nota] = 0
         
-    data2 = pd.concat([ap_null, rp_null, not_null])
-    return data2
+        data2 = pd.concat([ap_null, rp_null, not_null])
+        return data2
