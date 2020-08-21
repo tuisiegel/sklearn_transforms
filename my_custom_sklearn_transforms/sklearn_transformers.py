@@ -25,9 +25,9 @@ class Imput(BaseEstimator, TransformerMixin):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy() 
           
-        nota = "NOTA_" + subject
+        nota = "NOTA_" + self.subject
         
-        reprovacoes = "REPROVACOES_" + subject
+        reprovacoes = "REPROVACOES_" + self.subject
         ap_null = data.loc[data[reprovacoes] == 0].loc[pd.isnull(data[nota])]
         
         rp_null = data.loc[data[reprovacoes] != 0].loc[pd.isnull(data[nota])] 
