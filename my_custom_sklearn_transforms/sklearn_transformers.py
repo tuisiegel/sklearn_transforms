@@ -25,9 +25,9 @@ def imput(subject, data1):
         
     rp_null = data1.loc[data1[reprovacoes] != 0].loc[pd.isnull(data1[nota])] 
         
-    not_null = data1.loc[pd.notnull(data[nota])]
+    not_null = data1.loc[pd.notnull(data1[nota])]
                 
-    ap_null[nota] = data[nota].mean()
+    ap_null[nota] = data1[nota].mean()
         
     rp_null[nota] = 0
         
