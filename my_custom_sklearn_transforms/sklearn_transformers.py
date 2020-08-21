@@ -16,7 +16,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
     
 class Imput(BaseEstimator, TransformerMixin):
     def __init__(self, subject):
-        self.subejct = subject
+        self.subject = subject
 
     def fit(self, X, y=None):
         return self 
